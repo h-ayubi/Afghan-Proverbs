@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Afghan Proverbs</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@100..900&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+  background-color: #f4f4f1;
+  font-family: serif;
+}
+.div-header {
+background: linear-gradient(to right, #a78570, #997865, #806351);
+margin: 0px;
+color: #f4f4f1;
+}
+header h1 {
+text-align: center;
+padding: 10px;
+font-size: 42px;
+}
+header p {
+  text-align: center;
+  margin-top: 5px;
+  padding: 5px;
+  font-size: 20px;
+}
+a{
+  color: inherit;
+  text-decoration: none;
+}
+nav ul {
+display: flex;
+gap: 30px;
+margin-left: 10px;
+padding-bottom: 5px;
+font-size: 16px;
+list-style: none;
+}
+nav ul li:hover {
+  color: #70644f;
+  transition: color 0.3s ease;
+}
+.home-p {
+  text-align: center;
+  display: grid;
+  padding: 30px;
+  color: #372f38;
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.search-bar-input{
+  border-radius: 14px;
+  padding-left: 10px;
+  font-family: serif;
+  color: #372f38;
+  border: none;
+  display: grid;
+  margin: auto;
+  width: 500px;
+  height: 40px;
+
+  background-color: rgba(134, 132, 123, 0.4);
+  box-shadow: 0 2px 6px rgba(12, 6, 6, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+.search-bar-input:focus {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  outline: none;
+}
+.featured-proverbs{
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+  gap: 140px;
+  padding: 40px;
+  position: relative;
+  margin-bottom: 20px;
+}
+.proverb-card {
+  position: relative;
+  background: linear-gradient(to right, #a78570, #a78570, #997865);
+  border-radius: 14px;
+  padding: 40px;
+  width: 400px;
+  height: 210px;
+  font-size: 23px;
+  text-align: center;
+  color: #372f38;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.proverb-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.8);
+  
+}
+.tooltip-slide{
+  position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #c0bfb9, #acaba6);
+  color: #f4f4f1;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+  transition: bottom 0.6s ease;
+  z-index: 5;
+  
+}
+  .proverb-card:hover .tooltip-slide {
+      bottom: 0;
+  }
+
+.p-proverbs{
+  direction: rtl;
+  font-weight: bold;
+  font-family: Noto Sans Arabic;
+}
+.section-gallery{
+  background-color: #eae6df;
+  height: 820px;
+}
+.gallery-title{
+  font-size: 35px;
+  padding: 20px 40px;
+  color: #997865;
+  
+}
+.section-gallary {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  
+}
+.gallery-card{
+  position: relative;
+  background: linear-gradient(to right, #c0bfb9, #acaba6);
+  border-radius: 14px;
+  padding: 40px;
+  width: 400px;
+  height: 210px;
+  font-size: 23px;
+  text-align: center;
+  color: #f4f4f1;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
+  cursor: pointer;
+  overflow: hidden;
+  
+}
+.gallery-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.8);
+}
+.gallery-tooltip-slide {
+position: absolute;
+  bottom: -100%;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(to right, #a78570, #a78570, #997865);
+  color: #372f38;
+  font-weight: bold;
+  padding: 20px;
+  font-size: 18px;
+  text-align: center;
+  transition: bottom 0.6s ease;
+  z-index: 5;
+}
+ .gallery-card:hover .gallery-tooltip-slide {
+      bottom: 0;
+  }
+  .detail-title{
+  font-size: 35px;
+  padding: 20px 40px;
+  color: #acaba6;
+  }
+ .section-detail{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+ }
+  .detail-card {
+  background: linear-gradient(to right, #a78570, #a78570, #997865);
+  border-radius: 14px;
+  padding: 40px;
+  width: 1000px;
+  height: 470px;
+  color: #372f38;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.8s ease, box-shadow 0.8s ease;
+  cursor: pointer;
+  font-size: 20px;
+  line-height: 1.6;
+  flex-wrap: wrap;
+}
+
+.detail-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.8);
+  }
+  .p-tiltle-detail{
+    text-align: center;
+  }
+ 
+.section-wall{
+background-color: #eae6df;
+  height: 600px;
+}
+  .wall-tilte{
+margin-bottom: 80px;
+ }
+.share-wall{
+font-family: serif; color: #372f38; margin-bottom: 30px; font-weight: bold; 
+  font-size: 25px;
+}
+.form-wall{
+display: flex; flex-direction: column; align-items: center; gap: 20px;
+   max-width: 600px; margin: auto;
+}
+.name-form{
+width: 100%; padding: 12px; border-radius: 8px; border: none;
+      background: linear-gradient(to right, #c0bfb9, #acaba6); 
+      font-family: serif; margin-bottom: 10px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+  transition: transform 0.8s ease, box-shadow 0.8s ease; 
+}
+.name-form:focus {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+  outline: none;
+}
+.proverb-share{
+width: 100%; padding: 12px; border-radius: 8px; border: none;
+         font-family: serif; resize: none; margin-bottom: 80px;
+         background: linear-gradient(to right, #c0bfb9, #acaba6); 
+         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+         transition: transform 0.8s ease, box-shadow 0.8s ease;
+}
+.proverb-share:focus {
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.8);
+  outline: none;
+}
+.footer{
+  background: linear-gradient(to right, #a78570, #997865, #806351);
+margin: 0px;
+color: #f4f4f1;
+padding: 25px;
+font-size: 18px;
+}
+
+
+
+
+</style>
+ <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+<body>
+  <div class="div-header">
+  <header>
+    <h1>Afghan Proverbs</h1>
+    <p>A treasure trove of ancient Afghan wisdom</p>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#wall">Wall</a></li>
+      </ul>
+    </nav>
+  </header> 
+  </div>
+  <main>
+    
+    <section id="home">
+   <p class="home-p">
+    Proverbs are short yet profound tales—like a grandmother's quiet hum or a father's farewell advice. 
+    Within every word sleeps centuries of experience, <br>
+    and within their silence lies the voice of a nation. 
+    If history is a book, then proverbs are its golden footnotes.
+  </p>
+
+  <div class="search-bar">
+    <input class="search-bar-input" type="text" placeholder="Search proverbs...">
+  </div>
+
+  <div class="featured-proverbs">
+    <div class="proverb-card">
+      <p class="p-proverbs">"دیر آید درست آید."</p>
+      <p>dir ayad dorost ayad.</p>
+       <div class="tooltip-slide">It may come late, but it will come right.</div>
+    </div>
+    <div class="proverb-card">
+      <p class="p-proverbs">"یک دست صدا ندارد."</p>
+      <p>yek dast sada nadard.</p>
+      <div class="tooltip-slide">A single hand has no sound.</div>
+    </div>
+  </div>
+
+</section>
+
+    <section id="gallery" class="section-gallery">
+      <h1 class="gallery-title">Gallery</h1>
+      <div class="featured-proverbs section-gallary">
+    <div class="gallery-card">
+      <p class="p-proverbs">"از ماست که بر ماست."</p>
+      <p>az mast ke bar mast.</p>
+       <div class="gallery-tooltip-slide">It comes from us, upon us.</div>
+    </div>
+    <div class="gallery-card">
+      <p class="p-proverbs">"سنگ مفت، گنجشک مفت."</p>
+      <p>sang-e maft, ganjishk-e maft.</p>
+      <div class="gallery-tooltip-slide">Free stone, free sparrow.</div>
+    </div>
+  </div>
+  <div class="featured-proverbs section-gallary">
+    <div class="gallery-card">
+      <p class="p-proverbs">"خود کرده را تدبیر نیست."</p>
+      <p>khod karda ra tadbir nist.</p>
+       <div class="gallery-tooltip-slide">What’s done by oneself has no remedy.</div>
+    </div>
+    <div class="gallery-card">
+      <p class="p-proverbs">"مرغ همسایه غاز است."</p>
+      <p>murgh-e hamsaya ghaz ast.</p>
+      <div class="gallery-tooltip-slide">The neighbor’s chicken is a goose.</div>
+    </div>
+  </div>
+<div style="text-align: center; margin-top: 40px;">
+  <a href="#detail">
+    <button style="
+      background-color: #a78570;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: serif;
+      font-size: 18px;
+      color: #372f38;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#997865'; this.style.transform='scale(1.05)'"
+       onmouseout="this.style.backgroundColor='#a78570'; this.style.transform='scale(1)'">
+      More details
+    </button>
+  </a>
+</div>
+    
+</section>
+
+    <section id="detail">
+  <h1 class="detail-title">Proverb Detail</h1>
+  <div class="section-detail">
+<div class="detail-card "> 
+<h1 class="p-proverbs p-tiltle-detail">"سنگ مفت، گنجشک مفت."</h1>
+<p><strong>Pronunciation:</strong> sang-e maft, ganjishk-e maft. <br>
+<strong>Literal Translation:</strong> Free stone, free sparrow. <br>
+<strong>English Equivalent:</strong> “Nothing to lose.” or “Why not? It’s free.”
+<br><br>
+<strong>Explanation:</strong>
+This Afghan proverb is used when someone takes a chance or makes an attempt at
+ something that costs them nothing. The idea is: since the stone is free, and 
+ the sparrow is free, there’s no harm in trying to throw the stone — whether 
+ you hit the sparrow or not, you’ve lost nothing.
+
+It reflects a mindset of “no risk, no cost,” encouraging people to try things 
+especially when there’s no downside or expense involved.
+<br>
+<strong>Example in Context:</strong>
+Imagine someone is trying out a free online course to see if they like a new 
+skill. A friend might say:
+
+“Why not? <strong class="p-proverbs">سنگ مفت، گنجشک مفت</strong>”
+“You’re not paying anything, so even if it doesn’t work out, you haven’t lost anything.”</p>
+  </div>
+  </div>
+  <div style="text-align: center; margin-top: 40px;">
+  <a href="#gallery">
+    <button style="
+      background-color: #acaba6; 
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      margin-bottom: 60px;
+      font-family: serif;
+      font-size: 18px;
+      color: #f4f4f1;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#92918f'; this.style.transform='scale(1.05)'"
+       onmouseout="this.style.backgroundColor='#acaba6'; this.style.transform='scale(1)'">
+      Back to Gallery
+    </button>
+  </a>
+</div>
+    </section>
+
+    <section id="wall" class="section-wall">
+    <h1 class="gallery-title wall-tilte">Interactive Wall</h1>
+    <section id="interactive-wall" style="text-align: center; margin: 60px 0;">
+  <h2 class="share-wall">Share Your Proverb</h2>
+  
+  <form class="form-wall"> 
+    <input class="name-form" type="text" placeholder="Enter your name...">
+
+    <textarea class="proverb-share" type="text" rows="6"
+     placeholder="Write your favorite Afghan proverb here..."></textarea>
+
+    <button type="submit" style=
+    "background-color: #a78570;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 24px;
+      font-family: serif;
+      font-size: 18px;
+      color: #372f38;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    " onmouseover="this.style.backgroundColor='#997865'; this.style.transform='scale(1.05)'"
+       onmouseout="this.style.backgroundColor='#a78570'; this.style.transform='scale(1)'">
+      Submit Proverb
+    </button>
+  
+  </form>
+</section>
+    </section>
+  </main> 
+
+  <footer>
+    <div class="footer">
+      <p>&copy; 2025 Afghan Proverbs | Made with ❤️ in Afghanistan</p>
+    </div>
+  </footer>
+</body>
+</html>
